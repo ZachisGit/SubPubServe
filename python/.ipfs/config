@@ -3,16 +3,16 @@
     "HTTPHeaders": {}
   },
   "Addresses": {
-    "API": "/ip4/0.0.0.0/tcp/18573",
+    "API": "/ip4/0.0.0.0/tcp/39093",
     "Announce": [],
     "AppendAnnounce": [],
-    "Gateway": "/ip4/0.0.0.0/tcp/61977",
+    "Gateway": "/ip4/0.0.0.0/tcp/16405",
     "NoAnnounce": [],
     "Swarm": [
-      "/ip4/0.0.0.0/tcp/29878",
-      "/ip6/::/tcp/29878",
-      "/ip4/0.0.0.0/udp/29878/quic",
-      "/ip6/::/udp/29878/quic"
+      "/ip4/0.0.0.0/tcp/60937",
+      "/ip6/::/tcp/60937",
+      "/ip4/0.0.0.0/udp/60937/quic",
+      "/ip6/::/udp/60937/quic"
     ]
   },
   "AutoNAT": {},
@@ -93,8 +93,8 @@
     "Writable": false
   },
   "Identity": {
-    "PeerID": "12D3KooWKWNtaFSbk2aUhoc1XDMSWhJUZ5zyaSXpM2tb5dQwYNbz",
-    "PrivKey": "CAESQDR5BmDp8GCCrHFDOyBtqJuLfT68tSALDmoJ4nomxBW6j/k67Aj77VX1UVpsi8KzrrXwz2M5HJ8Mz6XJBPUZqHk="
+    "PeerID": "12D3KooWMiukbP9ss2AXstn3k22waHsgFkqi9kVznjhL8hJ31tPB",
+    "PrivKey": "CAESQOHIl+WWnHmXFmSLJb6pKT2VLvS3HO2XEp0lS6IdhJShsOZ4Tz45sobJ8BEnQu63KtjL7Z4DJ0IlmQ7NY0Ba83I="
   },
   "Internal": {},
   "Ipns": {

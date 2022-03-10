@@ -6,7 +6,7 @@ import _socket
 import socket
 import os
 
-from .__main__ import await_init, random_port
+from .__main__ import await_init, _random_port
 from . import http_api
 
 
@@ -109,7 +109,8 @@ def _port_listen(port):
 
     await_init()
 
-    print (http_api.p2p.listener(service_name, "/ip4/127.0.0.1/tcp/"+str(port)+"/", True))
+    print ("Listen:",http_api.p2p.listener(service_name, "/ip4/127.0.0.1/tcp/"+str(port)+"/", True))
+    print ("LS:",http_api.p2p.ls())
     return True
 
 # Check if host:port is in the host register,
@@ -126,15 +127,16 @@ def _host_forward(host,port):
     if service_name is None:
         return host,port
     
-    if len(_service_name_register[k]["ports"]) == 0:
+    if len(_service_name_register[service_name]["ports"]) == 0:
         await_init()
 
         port = _random_port()
         print (http_api.p2p.forward(service_name, "/ip4/127.0.0.1/tcp/"+str(port)+"/", P2P_SERVER_ID, True))
-        _service_name_register[k]["ports"].append(port)
+        print ("Host-Forward:",http_api.p2p.ls())
+        _service_name_register[service_name]["ports"].append(port)
 
     
-    return "127.0.0.1",_service_name_register[k]["ports"][-1]
+    return "127.0.0.1",_service_name_register[service_name]["ports"][-1]
 
 
 """ socket connection handler """

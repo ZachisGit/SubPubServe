@@ -20,7 +20,7 @@ class p2p:
 
     @staticmethod
     def ls():
-        endpoint = "http://127.0.0.1:"+str(http_port())+"/api/v0/p2p/listen"
+        endpoint = "http://127.0.0.1:"+str(http_port())+"/api/v0/p2p/ls"
         #print ("Pre-request")
         resp = requests.post(endpoint)
         #print ("123")
@@ -32,7 +32,7 @@ class p2p:
 
 
     def forward(protocol,listen_address,target_address,allow_custom_protocol):
-        endpoint = "http://127.0.0.1:"+str(http_port())+"/api/v0/p2p/listen?arg="+protocol+"&arg="+listen_address+"&arg="+target_address+"&allow-custom-protocol="+("true" if allow_custom_protocol else "false")
+        endpoint = "http://127.0.0.1:"+str(http_port())+"/api/v0/p2p/forward?arg="+protocol+"&arg="+listen_address+"&arg="+target_address+"&allow-custom-protocol="+("true" if allow_custom_protocol else "false")
         resp = requests.post(endpoint)
 
         if resp.status_code != 200:
