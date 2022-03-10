@@ -33,3 +33,7 @@ REST based server infrastructure in a Kubernetes Cluster
 ![rest based api](/imgs/kbc_rest.svg)
 
 
+# Interesting Links
+https://skyhub.site/Skynet/skfs/raw/branch/master/docs/experimental-features.md
+
+
