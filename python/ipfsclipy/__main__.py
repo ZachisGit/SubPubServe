@@ -4,9 +4,12 @@ import os.path
 import platform
 import random
 import threading
+import time
+import shutil
+import os
 
 from . import port
-
+#from . import http_api
 
 _BINARY_FORMAT = ""
 if platform.system() == "windows":
@@ -19,6 +22,9 @@ _PORT_GATEWAY = None
 
 def _daemon_init():
     global _PORT_SWARM,_PORT_HTTP,_PORT_GATEWAY,_BINARY_FORMAT,_IPFS_CLI_PATH
+    
+    if os.path.isdir(".ipfs"):
+        shutil.rmtree(".ipfs")
 
     _PORT_SWARM = _random_port()
     _PORT_HTTP = _random_port()
@@ -53,4 +59,19 @@ def _th_start():
     th.daemon = True
     th.start()
 
+
+def await_init():
+    while True:
+        try:
+            http_api.p2p.ls()
+            return True
+        except:
+            #import traceback
+            #traceback.print_exc()
+            time.sleep(0.2)
+        continue
+    return True
+
 _th_start()
+
+from . import http_api

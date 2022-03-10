@@ -3,16 +3,16 @@
     "HTTPHeaders": {}
   },
   "Addresses": {
-    "API": "/ip4/0.0.0.0/tcp/56477",
+    "API": "/ip4/0.0.0.0/tcp/18573",
     "Announce": [],
     "AppendAnnounce": [],
-    "Gateway": "/ip4/0.0.0.0/tcp/20480",
+    "Gateway": "/ip4/0.0.0.0/tcp/61977",
     "NoAnnounce": [],
     "Swarm": [
-      "/ip4/0.0.0.0/tcp/34918",
-      "/ip6/::/tcp/34918",
-      "/ip4/0.0.0.0/udp/34918/quic",
-      "/ip6/::/udp/34918/quic"
+      "/ip4/0.0.0.0/tcp/29878",
+      "/ip6/::/tcp/29878",
+      "/ip4/0.0.0.0/udp/29878/quic",
+      "/ip6/::/udp/29878/quic"
     ]
   },
   "AutoNAT": {},
@@ -65,7 +65,7 @@
     "AcceleratedDHTClient": false,
     "FilestoreEnabled": false,
     "GraphsyncEnabled": false,
-    "Libp2pStreamMounting": false,
+    "Libp2pStreamMounting": true,
     "P2pHttpProxy": false,
     "StrategicProviding": false,
     "UrlstoreEnabled": false
@@ -93,8 +93,8 @@
     "Writable": false
   },
   "Identity": {
-    "PeerID": "12D3KooWGfeDVFVHvVZJfkATBWUosFk8XgczqbM6JQ8dfm8LemTz",
-    "PrivKey": "CAESQJRR4EaG8h3vO6BmW4ROZ3EC2PWV7HF3MBgt4oisxwcyZcW512zgY672c9gGSYGdXGqf4tiQV86f9YVwFGnCT6U="
+    "PeerID": "12D3KooWKWNtaFSbk2aUhoc1XDMSWhJUZ5zyaSXpM2tb5dQwYNbz",
+    "PrivKey": "CAESQDR5BmDp8GCCrHFDOyBtqJuLfT68tSALDmoJ4nomxBW6j/k67Aj77VX1UVpsi8KzrrXwz2M5HJ8Mz6XJBPUZqHk="
   },
   "Internal": {},
   "Ipns": {
