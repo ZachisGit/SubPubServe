@@ -11,12 +11,16 @@ import (
     "path/filepath"
 )
 
+//!win:import (
+//!win:    "syscall"
+//!win:)
+
 func ipfs_init(path string) bool {
 
     swarm_key := []byte("/key/swarm/psk/1.0.0/\n/base16/\n32fe3e79d4b4ace82e07d3217678a5a19b918da5208ae071dd0de89a65680905")
     err := ioutil.WriteFile(path+_SEPERATOR+".ipfs" + _SEPERATOR + "swarm.key", swarm_key, 0644)
 
-    cmd := exec.Command(_IPFS_BINARY_LOCATION,"init")
+    cmd := exec.Command(_IPFS_BINARY_LOCATION,"init","--profile","server")
     cmd.Env = os.Environ()
     cmd.Env = append(cmd.Env, "IPFS_PATH=.ipfs")
     out,err := cmd.Output()
@@ -60,6 +64,9 @@ func ipfs_daemon(path string) bool {
     cmd := exec.Command(_IPFS_BINARY_LOCATION,"daemon")
     cmd.Env = os.Environ()
     cmd.Env = append(cmd.Env, "IPFS_PATH=.ipfs")
+
+    //!win:cmd.SysProcAttr = &syscall.SysProcAttr{Pdeathsig: syscall.SIGTERM}
+
     out,err := cmd.Output()
     _ = out
     if err != nil {

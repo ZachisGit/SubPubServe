@@ -3,16 +3,33 @@
     "HTTPHeaders": {}
   },
   "Addresses": {
-    "API": "/ip4/0.0.0.0/tcp/39093",
+    "API": "/ip4/0.0.0.0/tcp/44025",
     "Announce": [],
     "AppendAnnounce": [],
-    "Gateway": "/ip4/0.0.0.0/tcp/16405",
-    "NoAnnounce": [],
+    "Gateway": "/ip4/0.0.0.0/tcp/18602",
+    "NoAnnounce": [
+      "/ip4/10.0.0.0/ipcidr/8",
+      "/ip4/100.64.0.0/ipcidr/10",
+      "/ip4/169.254.0.0/ipcidr/16",
+      "/ip4/172.16.0.0/ipcidr/12",
+      "/ip4/192.0.0.0/ipcidr/24",
+      "/ip4/192.0.2.0/ipcidr/24",
+      "/ip4/192.168.0.0/ipcidr/16",
+      "/ip4/198.18.0.0/ipcidr/15",
+      "/ip4/198.51.100.0/ipcidr/24",
+      "/ip4/203.0.113.0/ipcidr/24",
+      "/ip4/240.0.0.0/ipcidr/4",
+      "/ip6/100::/ipcidr/64",
+      "/ip6/2001:2::/ipcidr/48",
+      "/ip6/2001:db8::/ipcidr/32",
+      "/ip6/fc00::/ipcidr/7",
+      "/ip6/fe80::/ipcidr/10"
+    ],
     "Swarm": [
-      "/ip4/0.0.0.0/tcp/60937",
-      "/ip6/::/tcp/60937",
-      "/ip4/0.0.0.0/udp/60937/quic",
-      "/ip6/::/udp/60937/quic"
+      "/ip4/0.0.0.0/tcp/44551",
+      "/ip6/::/tcp/44551",
+      "/ip4/0.0.0.0/udp/44551/quic",
+      "/ip6/::/udp/44551/quic"
     ]
   },
   "AutoNAT": {},
@@ -57,7 +74,7 @@
   },
   "Discovery": {
     "MDNS": {
-      "Enabled": true,
+      "Enabled": false,
       "Interval": 10
     }
   },
@@ -93,8 +110,8 @@
     "Writable": false
   },
   "Identity": {
-    "PeerID": "12D3KooWMiukbP9ss2AXstn3k22waHsgFkqi9kVznjhL8hJ31tPB",
-    "PrivKey": "CAESQOHIl+WWnHmXFmSLJb6pKT2VLvS3HO2XEp0lS6IdhJShsOZ4Tz45sobJ8BEnQu63KtjL7Z4DJ0IlmQ7NY0Ba83I="
+    "PeerID": "12D3KooWRn1miyFFEJwWsEEjamgtefiLLq4dcU3PpGcCkytkQCsd",
+    "PrivKey": "CAESQJwyLIAJtgd0iVsOTIkdwVj+yiKTVl1P/Vt72Q/8/i657SDEMBWYvxZXJlifAI7NOgJh8y20i9UObsDIgA20RKw="
   },
   "Internal": {},
   "Ipns": {
@@ -136,7 +153,24 @@
     "Type": "dht"
   },
   "Swarm": {
-    "AddrFilters": null,
+    "AddrFilters": [
+      "/ip4/10.0.0.0/ipcidr/8",
+      "/ip4/100.64.0.0/ipcidr/10",
+      "/ip4/169.254.0.0/ipcidr/16",
+      "/ip4/172.16.0.0/ipcidr/12",
+      "/ip4/192.0.0.0/ipcidr/24",
+      "/ip4/192.0.2.0/ipcidr/24",
+      "/ip4/192.168.0.0/ipcidr/16",
+      "/ip4/198.18.0.0/ipcidr/15",
+      "/ip4/198.51.100.0/ipcidr/24",
+      "/ip4/203.0.113.0/ipcidr/24",
+      "/ip4/240.0.0.0/ipcidr/4",
+      "/ip6/100::/ipcidr/64",
+      "/ip6/2001:2::/ipcidr/48",
+      "/ip6/2001:db8::/ipcidr/32",
+      "/ip6/fc00::/ipcidr/7",
+      "/ip6/fe80::/ipcidr/10"
+    ],
     "ConnMgr": {
       "GracePeriod": "20s",
       "HighWater": 900,
@@ -144,7 +178,7 @@
       "Type": "basic"
     },
     "DisableBandwidthMetrics": false,
-    "DisableNatPortMap": false,
+    "DisableNatPortMap": true,
     "RelayClient": {},
     "RelayService": {},
     "Transports": {

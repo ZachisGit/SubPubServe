@@ -43,3 +43,38 @@ class p2p:
 
 
 
+
+class dht:
+
+    @staticmethod
+    def provide():
+
+        dht.get()
+        "http://127.0.0.1:5001/api/v0/dht/provide?arg=<key>"
+        endpoint = "http://127.0.0.1:"+str(http_port())+"/api/v0/dht/provide?arg=QmeHGHBYrPCcajDF59kWApKCJTPUPxSVpDMEv5w7SYpvGa"
+        #print ("Pre-request")
+        resp = requests.post(endpoint)
+        print (resp.status_code)
+        if resp.status_code != 200:
+            #print ("None:","p2p.listener")
+            return None
+   
+        return resp.text
+
+
+
+
+
+
+    @staticmethod
+    def get():
+        "http://127.0.0.1:5001/api/v0/dht/provide?arg=<key>"
+        endpoint = "http://127.0.0.1:"+str(http_port())+"/api/v0/get?arg=QmeHGHBYrPCcajDF59kWApKCJTPUPxSVpDMEv5w7SYpvGa"
+        #print ("Pre-request")
+        resp = requests.post(endpoint)
+        print (resp.status_code)
+        if resp.status_code != 200:
+            #print ("None:","p2p.listener")
+            return None
+
+        return resp.text

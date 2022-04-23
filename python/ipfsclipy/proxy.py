@@ -5,9 +5,11 @@ import sys
 import _socket
 import socket
 import os
+import time
 
 from .__main__ import await_init, _random_port
 from . import http_api
+from .port import is_open 
 
 
 P2P_SERVER_ID = None
@@ -38,6 +40,12 @@ def tcpclient(service_name,endpoint=None):
     # domain
     else:
         _add_service_name_domain(service_name,endpoint)
+
+    endpoint_split = endpoint.split(":")
+    print ("INIT_TCP_CLIENT:",endpoint_split)
+    print ("END:",_host_forward(endpoint_split[0],-1 if len(endpoint_split) != 2 else int(endpoint_split[1])))
+    print ("END_INIT")
+    print (_service_name_register)
     return True   
 
 
@@ -135,8 +143,32 @@ def _host_forward(host,port):
         print ("Host-Forward:",http_api.p2p.ls())
         _service_name_register[service_name]["ports"].append(port)
 
+        if not _forward_setup_wait(port):
+            print ("SETUP FAILED FOR:",service_name,host,port)
+
     
     return "127.0.0.1",_service_name_register[service_name]["ports"][-1]
+
+def _forward_setup_wait(port):
+    def _connect(_port):
+        try:
+            with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+                s.connect(("127.0.0.1", _port))
+                s.sendall(b"Hello, world")
+                #_ = s.recv(1024)
+                s.close()
+                return True
+        except:
+            print ("PORT FAIL!")
+            return False
+
+    for i in range(30):
+        if _connect(port):
+            print ("Port is Open!")
+            return True
+        time.sleep(0.1)
+    print ("Port is Closed!")
+    return False
 
 
 """ socket connection handler """
@@ -153,7 +185,9 @@ def getaddrinfo(host, port, family=0, type=0, proto=0, flags=0):
     these arguments selects the full range of results.
     """
 
+    print ("Before:",host,port)
     host,port = _host_forward(host, port)
+    print ("After:",host,port)
 
     # We override this function since we want to translate the numeric family
     # and socket type values to enum constants.
@@ -163,7 +197,6 @@ def getaddrinfo(host, port, family=0, type=0, proto=0, flags=0):
         addrlist.append((socket._intenum_converter(af, socket.AddressFamily),
                          socket._intenum_converter(socktype, socket.SocketKind),
                          proto, canonname, sa))
-    print (host,port,addrlist)
     return addrlist
 
 

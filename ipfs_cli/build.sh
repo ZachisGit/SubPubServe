@@ -19,5 +19,10 @@ cp build/tmp/win/go-ipfs/ipfs.exe build/win
 
 rm build/tmp -r
 
-env GOOS=linux GOARCH=386 go build -o build/linux/ipfs-cli ipfs-cli.go
+echo "linux..."
+sed "s/\/\/\!win://" ipfs-cli.go > ipfs_cli_not_win.go
+env GOOS=linux GOARCH=386 go build -o build/linux/ipfs-cli ipfs_cli_not_win.go
+#rm _ipfs_cli_not_win.go
+
+echo "win..."
 env GOOS=windows GOARCH=386 go build -o build/win/ipfs-cli.exe ipfs-cli.go

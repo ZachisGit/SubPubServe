@@ -7,6 +7,8 @@ import threading
 import time
 import shutil
 import os
+import atexit
+import signal
 
 from . import port
 #from . import http_api
@@ -31,7 +33,9 @@ def _daemon_init():
     _PORT_GATEWAY = _random_port()
     print ([_IPFS_CLI_PATH + "ipfs-cli" + _BINARY_FORMAT,_IPFS_CLI_PATH+"ipfs"+_BINARY_FORMAT,str(_PORT_SWARM),str(_PORT_HTTP),str(_PORT_GATEWAY)])
     p = Popen([_IPFS_CLI_PATH + "ipfs-cli" + _BINARY_FORMAT,_IPFS_CLI_PATH+"ipfs"+_BINARY_FORMAT,str(_PORT_SWARM),str(_PORT_HTTP),str(_PORT_GATEWAY)], stdout=PIPE, bufsize=1, universal_newlines=True)
+    atexit.register(lambda: os.killpg(os.getpgid(p.pid), signal.SIGTERM))
     p.communicate()
+
 
     _PORT_SWARM, _PORT_HTTP, _PORT_GATEWAY = None,None,None
     print ("[IPFS-CLI] ERROR: DAEMON FAILURE")
@@ -63,7 +67,7 @@ def _th_start():
 def await_init():
     while True:
         try:
-            http_api.p2p.ls()
+            print ("DHT:",http_api.dht.provide())
             return True
         except:
             #import traceback
